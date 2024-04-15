@@ -1,12 +1,19 @@
 package com.androboy.unsplashpaging.ui
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import com.androboy.unsplashpaging.R
+import androidx.viewbinding.ViewBinding
+import com.androboy.unsplashpaging.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+class MainActivity : BaseActivity() {
+
+    private lateinit var ui: ActivityMainBinding
+
+    override fun layoutRes(): ViewBinding {
+        return ActivityMainBinding.inflate(layoutInflater)
     }
+
+    override fun initView() {
+
+    }
+
+
 }
