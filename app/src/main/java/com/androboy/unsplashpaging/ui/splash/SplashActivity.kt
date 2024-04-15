@@ -28,7 +28,7 @@ class SplashActivity : BaseActivity() {
 
     override fun initView() {
         ui = binding as ActivitySplashBinding
-        setStatusBarColor(AppUtil.getColor(R.color.white))
+        setStatusBarColor(AppUtil.getColor(R.color.black))
         navigateActivity()
     }
 
