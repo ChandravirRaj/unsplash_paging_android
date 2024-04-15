@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">UnsplashPaging</string>
+    <string name="app_name">UnSplash</string>
     <string name="msg_network_connection">Please check internet connection</string>
 </resources>

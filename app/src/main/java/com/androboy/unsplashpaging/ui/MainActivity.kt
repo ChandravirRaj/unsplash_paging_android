@@ -12,7 +12,7 @@ class MainActivity : BaseActivity() {
     }
 
     override fun initView() {
-
+        ui = binding as ActivityMainBinding
     }
 
 
