@@ -8,13 +8,11 @@ import com.androboy.unsplashpaging.ui.BaseActivity
 import com.androboy.unsplashpaging.ui.MainActivity
 import com.androboy.unsplashpaging.utils.AppUtil
 import com.androboy.unsplashpaging.utils.setFullScreen
-import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-@AndroidEntryPoint
 @SuppressLint("CustomSplashScreen")
 class SplashActivity : BaseActivity() {
     private lateinit var ui: ActivitySplashBinding
