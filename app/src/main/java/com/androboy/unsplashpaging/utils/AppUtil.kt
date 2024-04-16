@@ -1,13 +1,17 @@
 package com.androboy.unsplashpaging.utils
 
 import android.content.Context
+import android.content.Intent
 import android.net.ConnectivityManager
+import android.net.Uri
+import android.provider.Settings
 import android.text.TextUtils
 import android.view.View
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.androboy.unsplashpaging.R
 import com.androboy.unsplashpaging.UnsplashApplication
+import com.androboy.unsplashpaging.ui.BaseActivity
 import java.util.Objects
 
 
@@ -35,6 +39,7 @@ object AppUtil {
     }
 
 
+    @JvmStatic
     fun getColor(color: Int): Int {
         return ContextCompat.getColor(UnsplashApplication.INSTANCE, color)
     }
@@ -53,6 +58,15 @@ object AppUtil {
             Toast.makeText(UnsplashApplication.INSTANCE, msg, Toast.LENGTH_LONG)
                 .show()
         }
+    }
+
+    @JvmStatic
+    fun openAppPermissionScreen(activity: BaseActivity) {
+        val intent = Intent()
+        intent.action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
+        val uri = Uri.fromParts("package", activity.packageName, null)
+        intent.data = uri
+        activity.startActivity(intent)
     }
 
 }
