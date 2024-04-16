@@ -1,5 +1,6 @@
 package com.androboy.unsplashpaging.ui.adapters
 
+import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,8 +25,8 @@ class PhotosPagingAdapter() :
 
     override fun onBindViewHolder(holder: QuotePagingViewHolder, position: Int) {
         val item = getItem(position)
-        if (imgLoader != null) {
-            imgLoader?.DisplayImage(item?.urls?.regular, holder.ivPhotos);
+        if (imgLoader != null && !TextUtils.isEmpty(item?.urls?.regular)) {
+            imgLoader?.DisplayImage(item?.urls?.regular!!, holder.ivPhotos);
         }
     }
 
@@ -34,7 +35,6 @@ class PhotosPagingAdapter() :
     }
 
     class QuotePagingViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
         val ivPhotos = itemView.findViewById<AppCompatImageView>(R.id.ivMain)
     }
 
