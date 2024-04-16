@@ -14,6 +14,10 @@ import com.androboy.unsplashpaging.utils.imgloading.ImageLoader
 import com.androboy.unsplashpaging.utils.invisible
 import com.androboy.unsplashpaging.utils.visible
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
@@ -36,6 +40,7 @@ class MainActivity : BaseActivity() {
         setListeners()
     }
 
+    @OptIn(DelicateCoroutinesApi::class)
     private fun setListeners() {
 
         ui.progressBar.visible()
@@ -48,6 +53,11 @@ class MainActivity : BaseActivity() {
 
         imgLoader = ImageLoader(this)
         photoPagingAdapter.setImageLoader(imgLoader)
+
+        GlobalScope.launch { // context of the parent, main runBlocking coroutine
+            delay(2000)
+            ui.progressBar.invisible()
+        }
     }
 
     private fun setObserver() {
@@ -55,7 +65,7 @@ class MainActivity : BaseActivity() {
     }
 
     private val photosObserver: Observer<PagingData<UnsplashPhoto>> = Observer {
-        ui.progressBar.invisible()
+
         photoPagingAdapter.submitData(lifecycle, it)
     }
 }
