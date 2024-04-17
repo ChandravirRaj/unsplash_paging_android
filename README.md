@@ -21,8 +21,8 @@ This project is created for consuming unsplash api. We used retrofit to consume 
 ```
 
 android {
-    namespace 'com.androboy.unsplashpaging'
-    compileSdk 34
+namespace 'com.androboy.unsplashpaging'
+compileSdk 34
 
     defaultConfig {
         applicationId "com.androboy.unsplashpaging"
@@ -54,10 +54,10 @@ android {
 }
 ## Dependencies
 
- implementation 'androidx.core:core-ktx:1.8.0'
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.11.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+implementation 'androidx.core:core-ktx:1.8.0'
+implementation 'androidx.appcompat:appcompat:1.6.1'
+implementation 'com.google.android.material:material:1.11.0'
+implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
 
     // lib for livedata and view model
@@ -90,14 +90,53 @@ android {
 ## API Integration
 
 @GET("photos")
-    suspend fun loadPhotos(
-        @Query("client_id") clientId: String,
-        @Query("page") page: Int,
-        @Query("per_page") pageSize: Int
-    ): Response<List<UnsplashPhoto>>
+suspend fun loadPhotos(
+@Query("client_id") clientId: String,
+@Query("page") page: Int,
+@Query("per_page") pageSize: Int
+): Response<List<UnsplashPhoto>>
 
 
     "your access key",
     "your secret key"
 
     - [Unsplash API Access Key and Secret Key](https://unsplash.com/documentation#registering-your-application)
+
+## Demo ----->>
+Branch Name- dev
+[https://drive.google.com/file/d/17H-BDK_APgS8a9C8eyAiydu9L4UcWJRW/view?usp=sharing](https://drive.google.com/file/d/17H-BDK_APgS8a9C8eyAiydu9L4UcWJRW/view?usp=sharing)
+
+
+## Compose Setup in Existing Project
+
+- buildFeatures {
+  compose true
+  }
+
+- composeOptions {
+  kotlinCompilerExtensionVersion = "1.4.5"
+  kotlinCompilerVersion '1.4.32'
+  }
+
+- dependencies
+    - implementation ("androidx.paging:paging-compose-android:3.3.0-beta01")
+
+    - implementation "androidx.compose.ui:ui:1.6.5"
+    - implementation "androidx.compose.material:material:1.6.5"
+    - implementation "androidx.compose.ui:ui-tooling:1.6.5"
+    - implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.7.0'
+    - implementation 'androidx.activity:activity-compose:1.8.2'
+    - implementation("io.coil-kt:coil-compose:2.4.0")
+
+
+- Add Composable activity
+    - ImagesGridActivity
+
+
+## Compose UI Demo ----->>
+Branch Name- dev_compose
+
+Insert gif or link to demo
+
+[https://drive.google.com/file/d/1G5zv1amA1gpxhN6cjchqB6LmnweIhfQ9/view?usp=sharing](https://drive.google.com/file/d/17H-BDK_APgS8a9C8eyAiydu9L4UcWJRW/view?usp=sharing)
+
