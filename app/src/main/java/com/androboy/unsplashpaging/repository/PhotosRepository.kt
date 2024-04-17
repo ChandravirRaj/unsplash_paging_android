@@ -12,5 +12,5 @@ class PhotosRepository @Inject constructor(private val apiInterface: ApiRequests
     fun getPhotos() = Pager(
         config = PagingConfig(pageSize = 10, maxSize = 100, enablePlaceholders = false),
         pagingSourceFactory = { PhotosPagingSource(apiInterface) },
-    ).liveData
+    ).flow
 }

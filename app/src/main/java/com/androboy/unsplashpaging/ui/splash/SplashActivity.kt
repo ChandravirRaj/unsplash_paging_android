@@ -2,14 +2,16 @@ package com.androboy.unsplashpaging.ui.splash
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Build
 import android.util.Log
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.viewbinding.ViewBinding
 import com.androboy.unsplashpaging.R
 import com.androboy.unsplashpaging.UnsplashApplication
 import com.androboy.unsplashpaging.databinding.ActivitySplashBinding
 import com.androboy.unsplashpaging.ui.BaseActivity
-import com.androboy.unsplashpaging.ui.MainActivity
+import com.androboy.unsplashpaging.ui.compose.ImagesGridActivity
 import com.androboy.unsplashpaging.utils.AppUtil
 import com.androboy.unsplashpaging.utils.DialogUtils
 import com.androboy.unsplashpaging.utils.setFullScreen
@@ -50,6 +52,7 @@ class SplashActivity : BaseActivity() {
         }
     }
 
+    @OptIn(ExperimentalFoundationApi::class)
     private fun gotoScreen() {
 
         val whatPermission1 = ArrayList<String>()
@@ -69,7 +72,8 @@ class SplashActivity : BaseActivity() {
             .withListener(object : MultiplePermissionsListener {
                 override fun onPermissionsChecked(multiplePermissionsReport: MultiplePermissionsReport) {
                     if (multiplePermissionsReport.areAllPermissionsGranted()) {
-                        launchActivity(MainActivity::class.java)
+                        val intent = Intent(this@SplashActivity, ImagesGridActivity::class.java)
+                        startActivity(intent)
                         finishAffinity()
                     } else {
                         DialogUtils.showAlert(
